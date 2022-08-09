@@ -29,9 +29,12 @@ public class Position {
 
 	@ManyToOne
 	private Locality locality;
-	
+
 	@OneToMany(mappedBy = "position")
 	private List<BioticSample> bioticSamples;
+
+	@OneToMany(mappedBy = "position")
+	private List<AbioticSample> abioticSamples;
 
 	public Long getId() {
 		return id;
@@ -79,6 +82,22 @@ public class Position {
 
 	public void setLocality(Locality locality) {
 		this.locality = locality;
+	}
+
+	public List<BioticSample> getBioticSamples() {
+		return bioticSamples;
+	}
+
+	public void setBioticSamples(List<BioticSample> bioticSamples) {
+		this.bioticSamples = bioticSamples;
+	}
+
+	public List<AbioticSample> getAbioticSamples() {
+		return abioticSamples;
+	}
+
+	public void setAbioticSamples(List<AbioticSample> abioticSamples) {
+		this.abioticSamples = abioticSamples;
 	}
 
 }
