@@ -14,9 +14,11 @@ public class State {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String name;
-	
+
+	private String alphaCode;
+
 	@OneToMany(mappedBy = "state")
 	private List<City> cities;
 
@@ -36,6 +38,14 @@ public class State {
 		this.name = name;
 	}
 
+	public String getAlphaCode() {
+		return alphaCode;
+	}
+
+	public void setAlphaCode(String alphaCode) {
+		this.alphaCode = alphaCode;
+	}
+
 	public List<City> getCities() {
 		return cities;
 	}
@@ -43,5 +53,5 @@ public class State {
 	public void setCities(List<City> cities) {
 		this.cities = cities;
 	}
-	
+
 }
