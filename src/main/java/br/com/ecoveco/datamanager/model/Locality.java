@@ -2,6 +2,7 @@ package br.com.ecoveco.datamanager.model;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +17,7 @@ public class Locality {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Column(unique = true)
 	private String name;
 
 	@ManyToOne
@@ -23,6 +25,14 @@ public class Locality {
 
 	@OneToMany(mappedBy = "locality")
 	private List<Position> positions;
+
+	public Locality() {
+	}
+
+	public Locality(String name, City city) {
+		this.name = name;
+		this.city = city;
+	}
 
 	public Long getId() {
 		return id;
