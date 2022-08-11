@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
-public class LocalityExceptionHandler {
+public class DatamanagerExceptionHandler {
 
 	private final String DUPLICATED_ENTRY = "DUPLICATED_ENTRY";
 	private final String INVALID_ID = "INVALID_ID";
