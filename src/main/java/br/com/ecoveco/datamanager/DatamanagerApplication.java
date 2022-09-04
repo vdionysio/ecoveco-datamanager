@@ -9,5 +9,4 @@ public class DatamanagerApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DatamanagerApplication.class, args);
 	}
-
 }

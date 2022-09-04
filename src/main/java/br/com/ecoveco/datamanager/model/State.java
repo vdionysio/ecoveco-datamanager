@@ -21,6 +21,16 @@ public class State {
 
 	@OneToMany(mappedBy = "state")
 	private List<City> cities;
+	
+	public State() {
+		
+	}
+	
+	public State(Long id, String name, String alphaCode) {
+		this.id = id;
+		this.name = name;
+		this.alphaCode = alphaCode;
+	}
 
 	public Long getId() {
 		return id;

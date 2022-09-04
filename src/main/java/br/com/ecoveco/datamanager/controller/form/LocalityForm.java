@@ -40,6 +40,7 @@ public class LocalityForm {
 		if(city.isEmpty()) {
 			throw new ObjectNotFoundException(cityId, "City");			
 		}
+		System.out.println(name);
 		locality.setCity(city.get());
 		locality.setName(name);
 	}
