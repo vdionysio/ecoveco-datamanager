@@ -30,30 +30,21 @@ import br.com.ecoveco.datamanager.repository.LocalityRepository;
 public class LocalityController {
 
 	private LocalityRepository localityRepository;
-	
+
 	@Autowired
 	private CityRepository cityRepository;
-	
+
 	public LocalityController(LocalityRepository localityRepository) {
 		this.localityRepository = localityRepository;
 	}
-	
+
 	@GetMapping
 	public ResponseEntity<List<LocalityDto>> getAll() {
 		List<Locality> localities = localityRepository.findAll();
-		
+
 		return ResponseEntity.ok(LocalityDto.convertListToDto(localities));
 	}
-	
-	@PostMapping
-	public ResponseEntity<?> create(@RequestBody @Valid LocalityForm localityForm, UriComponentsBuilder uriBuilder) {
-		Locality locality = localityForm.convert(cityRepository);
-		localityRepository.save(locality);
-		URI uri = uriBuilder.path("/localities/{id}").buildAndExpand(locality.getId()).toUri();
 
-		return ResponseEntity.created(uri).body(new LocalityDto(locality));
-	}
-	
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getById(@PathVariable Long id) {
 		Optional<Locality> locality = localityRepository.findById(id);
@@ -62,7 +53,16 @@ public class LocalityController {
 		}
 		return ResponseEntity.ok(new LocalityDto(locality.get()));
 	}
-	
+
+	@PostMapping
+	public ResponseEntity<?> create(@RequestBody @Valid LocalityForm localityForm, UriComponentsBuilder uriBuilder) {
+		Locality locality = localityForm.convert(cityRepository);
+		localityRepository.save(locality);
+		URI uri = uriBuilder.path("/localities/{id}").buildAndExpand(locality.getId()).toUri();
+
+		return ResponseEntity.created(uri).body(new LocalityDto(locality));
+	}
+
 	@PutMapping("/{id}")
 	public ResponseEntity<?> edit(@PathVariable Long id, @RequestBody @Valid LocalityForm localityForm) {
 		Optional<Locality> locality = localityRepository.findById(id);
@@ -72,10 +72,10 @@ public class LocalityController {
 
 		localityForm.update(locality.get(), cityRepository);
 		localityRepository.save(locality.get());
-		
+
 		return ResponseEntity.ok(new LocalityDto(locality.get()));
 	}
-	
+
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id) {
 		Optional<Locality> locality = localityRepository.findById(id);

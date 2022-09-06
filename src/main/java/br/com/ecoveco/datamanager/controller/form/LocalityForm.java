@@ -19,6 +19,10 @@ public class LocalityForm {
 	@NotNull(message = "cityId must not be null")
 	private Long cityId;
 
+	public LocalityForm(String name, Long cityId) {
+		this.name = name;
+		this.cityId = cityId;
+	}
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -40,7 +44,6 @@ public class LocalityForm {
 		if(city.isEmpty()) {
 			throw new ObjectNotFoundException(cityId, "City");			
 		}
-		System.out.println(name);
 		locality.setCity(city.get());
 		locality.setName(name);
 	}
