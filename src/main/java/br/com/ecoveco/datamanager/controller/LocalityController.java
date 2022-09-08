@@ -7,7 +7,6 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.hibernate.ObjectNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,11 +30,11 @@ public class LocalityController {
 
 	private LocalityRepository localityRepository;
 
-	@Autowired
 	private CityRepository cityRepository;
 
-	public LocalityController(LocalityRepository localityRepository) {
+	public LocalityController(LocalityRepository localityRepository, CityRepository cityRepository) {
 		this.localityRepository = localityRepository;
+		this.cityRepository = cityRepository;
 	}
 
 	@GetMapping

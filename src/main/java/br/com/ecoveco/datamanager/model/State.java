@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class State {
 
@@ -56,6 +58,7 @@ public class State {
 		this.alphaCode = alphaCode;
 	}
 
+	@JsonManagedReference
 	public List<City> getCities() {
 		return cities;
 	}

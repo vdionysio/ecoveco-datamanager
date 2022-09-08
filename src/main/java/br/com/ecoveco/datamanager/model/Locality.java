@@ -33,8 +33,8 @@ public class Locality {
 		this.name = name;
 		this.city = city;
 	}
-	
-	public Locality(Long id,String name, City city) {
+
+	public Locality(Long id, String name, City city) {
 		this.id = id;
 		this.name = name;
 		this.city = city;
